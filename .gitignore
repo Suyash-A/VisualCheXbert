@@ -1,1 +1,4 @@
 model_path/
+src/__pycache__/
+src/datasets/__pycache__/
+src/models/__pycache__/

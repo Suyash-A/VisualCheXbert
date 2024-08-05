@@ -134,7 +134,8 @@ def label_and_save_preds(checkpoint_folder, csv_path, out_path):
     reports = pd.read_csv(csv_path)['Report Impression'].tolist()
 
     df_visualchexbert.insert(loc=0, column='Report Impression', value=reports)
-    df_visualchexbert.to_csv(os.path.join(out_path, 'labeled_reports.csv'), index=False)
+    # df_visualchexbert.to_csv(os.path.join(out_path, 'labeled_reports.csv'), index=False)
+    df_visualchexbert.to_csv(out_path, index=False)
 
     return df_visualchexbert
 
