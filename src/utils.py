@@ -110,7 +110,14 @@ def test(model, checkpoint_path, test_ld):
     model = model.to(device)
 
     checkpoint = torch.load(checkpoint_path)
-    model.load_state_dict(checkpoint['model_state_dict'])
+    # model.load_state_dict(checkpoint['model_state_dict'])
+
+    # Remove 'module.' from the model's state_dict
+    new_state_dict = {}
+    for k, v in checkpoint['model_state_dict'].items():
+        name = k[7:]
+        new_state_dict[name] = v
+    model.load_state_dict(new_state_dict)
 
     print("Doing evaluation on test set\n")
     metrics = evaluate(model, test_ld, device)

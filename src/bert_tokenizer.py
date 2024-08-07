@@ -34,12 +34,15 @@ def load_list(path):
                 return impressions
 
 if __name__ == "__main__":
-        tokenizer = BertTokenizer.from_pretrained('/data3/aihc-winter20-chexbert/bluebert/pretrain_repo')
-        #tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        # tokenizer = BertTokenizer.from_pretrained('/data3/aihc-winter20-chexbert/bluebert/pretrain_repo')
+        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         #tokenizer = AutoTokenizer.from_pretrained("emilyalsentzer/Bio_ClinicalBERT")
         #tokenizer = AutoTokenizer.from_pretrained('xlnet-base-cased')
 
-        impressions = get_impressions_from_csv('/data3/aihc-winter20-chexbert/chexpert_data/vision_test_gt.csv')
+        # impressions = get_impressions_from_csv('/data3/aihc-winter20-chexbert/chexpert_data/vision_test_gt.csv')
+        impressions = get_impressions_from_csv("/vol/bitbucket/sga23/msc_project/data_msc_project/VisualCheXbert/input_visualchexbert.csv")
         new_impressions = tokenize(impressions, tokenizer)
-        with open('/data3/aihc-winter20-chexbert/bluebert/vision_labels/impressions_lists/vision_test', 'w') as filehandle:
+        # with open('/data3/aihc-winter20-chexbert/bluebert/vision_labels/impressions_lists/vision_test', 'w') as filehandle:
+        #         json.dump(new_impressions, filehandle)
+        with open('/vol/bitbucket/sga23/msc_project/data_msc_project/VisualCheXbert/jayson', 'w') as filehandle:
                 json.dump(new_impressions, filehandle)
